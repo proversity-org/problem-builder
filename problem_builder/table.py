@@ -91,7 +91,7 @@ class MentoringTableBlock(
             {"display_name": "Vertical", "value": 'vertical'},
         ]
     )
-    editable_fields = ("type", "allow_download, table_style")
+    editable_fields = ("type", "allow_download","table_style")
     allow_download = Boolean(
         display_name=_("Allow Download"),
         help=_("Allow students to download a copy of the table for themselves."),
@@ -147,7 +147,7 @@ class MentoringTableBlock(
             context['vertical_values'] = vertical_values
             html = loader.render_template('templates/html/mentoring-table-vertical.html', context)
             return {'content': html}
-            
+
 
     @property
     def current_user_key(self):
