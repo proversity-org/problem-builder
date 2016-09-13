@@ -109,6 +109,7 @@ class ConditionalMessageBlock(
 
         return True
 
+    @XBlock.supports("multi_device")
     def student_view(self, _context=None):
         """ Render this message. """
         html = u'<div class="review-conditional-message">{content}</div>'.format(
@@ -145,6 +146,7 @@ class ScoreSummaryBlock(XBlockWithTranslationServiceMixin, XBlockWithPreviewMixi
     def display_name_with_default(self):
         return self._(self.STUDIO_LABEL)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Render the score summary message. """
         context = context or {}
@@ -188,6 +190,7 @@ class PerQuestionFeedbackBlock(XBlockWithTranslationServiceMixin, XBlockWithPrev
     def display_name_with_default(self):
         return self._(self.STUDIO_LABEL)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Render the per-question feedback, if any. """
         review_tips = (context or {}).get("score_summary", {}).get("review_tips")
@@ -246,6 +249,7 @@ class ReviewStepBlock(
             NestedXBlockSpec(PerQuestionFeedbackBlock, single_instance=True),
         ]
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """
         Normal view of the review step.

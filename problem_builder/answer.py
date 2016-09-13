@@ -227,6 +227,7 @@ class AnswerBlock(SubmittingXBlockMixin, AnswerMixin, QuestionMixin, StudioEdita
         fragment.initialize_js('AnswerBlock')
         return fragment
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Normal view of this XBlock, identical to mentoring_view """
         return self.mentoring_view(context)
@@ -366,6 +367,7 @@ class AnswerRecapBlock(AnswerMixin, StudioEditableXBlockMixin, XBlock):
         fragment.initialize_js('AnswerRecapBlock')
         return fragment
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Normal view of this XBlock, identical to mentoring_view """
         return self.mentoring_view(context)

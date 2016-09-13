@@ -129,6 +129,7 @@ class InstructorToolBlock(XBlock):
             'page_size': PAGE_SIZE
         }
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Normal View """
         if not self.user_is_staff():

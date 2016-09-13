@@ -1,0 +1,18 @@
+{% for vertical_value in vertical_values %}
+    <table>
+        <thead>
+            <tr>
+                <th><h2>{{ vertical_value.0|safe }}</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="mentoring-column">
+                        {{vertical_value.1|safe}}
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endfor %}
