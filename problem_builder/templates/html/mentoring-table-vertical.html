@@ -1,12 +1,18 @@
-<table>
-    {% for vertical_value in vertical_values %}
-        <tr>
-            <th>{{ vertical_value.0|safe }}</th>
-            <td>
-                <div class="mentoring-column">
-                    {{vertical_value.1|safe}}
-                </div>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+{% for vertical_value in vertical_values %}
+    <table>
+        <thead>
+            <tr>
+                <th>{{ vertical_value.0|safe }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="mentoring-column">
+                        {{vertical_value.1|safe}}
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endfor %}
