@@ -139,17 +139,15 @@ class MentoringTableBlock(
             vertical_values.append([header, child_frag.content])
 
         if self.table_style is 'horizontal':
-
             context['header_values'] = header_values if any(header_values) else None
             context['content_values'] = content_values
             html = loader.render_template('templates/html/mentoring-table.html', context)
             return {'content': html}
-         else:
-
+        else:
             context['vertical_values'] = vertical_values
             html = loader.render_template('templates/html/mentoring-table-vertical.html', context)
             return {'content': html}
-
+            
 
     @property
     def current_user_key(self):
