@@ -144,6 +144,7 @@ class MentoringTableBlock(
             html = loader.render_template('templates/html/mentoring-table.html', context)
             return {'content': html}
         else:
+            print vertical_values
             context['vertical_values'] = vertical_values
             html = loader.render_template('templates/html/mentoring-table-vertical.html', context)
             return {'content': html}
