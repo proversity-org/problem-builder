@@ -138,8 +138,6 @@ class MentoringTableBlock(
             content_values.append(child_frag.content)
             vertical_values.append([header, child_frag.content])
 
-        print 'table style'
-        print self.table_style
         if self.table_style == 'horizontal':
             context['header_values'] = header_values if any(header_values) else None
             context['content_values'] = content_values
