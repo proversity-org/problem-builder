@@ -81,6 +81,16 @@ class MentoringTableBlock(
             {"display_name": "Immunity Map", "value": "immunity-map"},
         ],
     )
+    table_style = String(
+        display_name="Table Style",
+        help="Display the table horizontally or vertically.",
+        scope=Scope.content,
+        default='horizontal',
+        values=[
+            {"display_name": "Horizontal", "value": 'horizontal'},
+            {"display_name": "Vertical", "value": 'vertical'},
+        ]
+    )
     editable_fields = ("type", "allow_download")
     allow_download = Boolean(
         display_name=_("Allow Download"),
@@ -115,6 +125,7 @@ class MentoringTableBlock(
         except Share.DoesNotExist:
             raise JsonHandlerError(403, _("You are not permitted to view this student's table."))
 
+        vertical_values = []
         for child_id in self.children:
             child = self.runtime.get_block(child_id)
             # Child should be an instance of MentoringTableColumn
@@ -125,10 +136,20 @@ class MentoringTableBlock(
             header_values.append(header)
             child_frag = child.render('mentoring_view', context)
             content_values.append(child_frag.content)
-        context['header_values'] = header_values if any(header_values) else None
-        context['content_values'] = content_values
-        html = loader.render_template('templates/html/mentoring-table.html', context)
-        return {'content': html}
+            vertical_values.append([header, child_frag.content])
+
+        if self.table_style is 'horizontal':
+
+            context['header_values'] = header_values if any(header_values) else None
+            context['content_values'] = content_values
+            html = loader.render_template('templates/html/mentoring-table.html', context)
+            return {'content': html}
+         else:
+
+            context['vertical_values'] = vertical_values
+            html = loader.render_template('templates/html/mentoring-table-vertical.html', context)
+            return {'content': html}
+
 
     @property
     def current_user_key(self):
