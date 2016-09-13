@@ -333,6 +333,7 @@ class PlotBlock(StudioEditableXBlockMixin, StudioContainerWithNestedXBlocksMixin
     def mentoring_view(self, context):
         return self.student_view(context)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Student View """
         context = context.copy() if context else {}
@@ -447,6 +448,7 @@ class PlotOverlayBlock(StudioEditableXBlockMixin, XBlockWithPreviewMixin, XBlock
         context['hide_header'] = True
         return self.author_preview_view(context)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context):
         context['self'] = self
         fragment = Fragment()
