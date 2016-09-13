@@ -91,7 +91,7 @@ class MentoringTableBlock(
             {"display_name": "Vertical", "value": 'vertical'},
         ]
     )
-    editable_fields = ("type", "allow_download")
+    editable_fields = ("type", "allow_download, table_style")
     allow_download = Boolean(
         display_name=_("Allow Download"),
         help=_("Allow students to download a copy of the table for themselves."),
