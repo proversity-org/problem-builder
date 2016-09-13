@@ -9,6 +9,10 @@
     body {
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
+    @media print {
+        body {transform: scale(.7);}
+        table {page-break-inside: avoid;}
+    }
     {{css|safe}}
     </style>
 </head>
