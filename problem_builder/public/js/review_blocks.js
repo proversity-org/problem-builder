@@ -55,14 +55,16 @@ function ExportBase(runtime, element, initData) {
             var pdf = new jsPDF();
             pdf.addHTML(wrapperHTML,function() {
                 var string = pdf.output('datauristring');
-                // $(this).attr('href', string);
-                $('.preview-pane').attr('src', string);
+                iframe = document.createElement('iframe');
+                iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
+                document.body.appendChild(iframe);
+                iframe.src = pdf.output('datauristring');
             });
-            // var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
+            var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             // var dataURI = "data:application/pdf;base64," + unicodeStringToBase64(wrapperHTML);
             // console.log(dataURI);
             // pdf.save('starapp' + '.pdf');
-            // $(this).attr('href', dataURI);
+            $(this).attr('href', dataURI);
         }
     };
 
