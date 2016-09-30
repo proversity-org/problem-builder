@@ -51,7 +51,6 @@ function ExportBase(runtime, element, initData) {
                 $(this).attr('xlink:href', generateDataUriFromImageURL(origURL));
             });
             // Take the resulting HTML and put it into the template we have:
-            console.log($report.find('.mentoring'));
             var cache_width = $report.find('.mentoring').width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
@@ -78,7 +77,6 @@ function ExportBase(runtime, element, initData) {
 
     function getCanvas(html){
      var a4  =[ 595.28,  841.89];
-     console.log(html);
      html.width((a4[0]*1.33333) -80).css('max-width','none');
      return html2canvas(html,{
          imageTimeout:2000,
