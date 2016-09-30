@@ -293,7 +293,9 @@ class MentoringTableBlock(
         fragment.add_css_url(self.runtime.local_resource_url(self, 'public/css/mentoring-table.css'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/vendor/jquery-shorten.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/jspdf.js'))
-        fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/addhtml.js'))
+        fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/from_html.js'))
+        fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/split_text_to_size.js'))
+        fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/standard_fonts_metrics.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/libs/html2canvas/dist/html2canvas.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, self.js_path))
         fragment.initialize_js(
