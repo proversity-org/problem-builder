@@ -60,7 +60,7 @@ function ExportBase(runtime, element, initData) {
             var doc = new jsPDF('p','pt','a4'); 
 
             doc.addHTML(document.body,function() {
-                var string = pdf.output('datauristring');
+                var string = doc.output('datauristring');
                 doc.save('report.pdf');
             });
 
