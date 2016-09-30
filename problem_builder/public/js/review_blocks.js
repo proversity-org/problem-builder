@@ -61,10 +61,10 @@ function ExportBase(runtime, element, initData) {
                 doc.save('report.pdf');
             });
 
-            doc.fromHTML($report.context, 15, 15, {
-                'width': 170, 
-            });
-            doc.save('report.pdf');
+            // doc.fromHTML($report.context, 15, 15, {
+            //     'width': 170, 
+            // });
+            // doc.save('report.pdf');
 
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
