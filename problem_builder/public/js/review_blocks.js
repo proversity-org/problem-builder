@@ -57,8 +57,9 @@ function ExportBase(runtime, element, initData) {
 
             // createPDF(mentoringTableContainer, cache_width);
             var doc = new jsPDF('p','pt','a4'); 
-
-            doc.addHTML($report.html() ,function() {
+            console.log($report.html());
+            console.log($report.html().context());
+            doc.addHTML(mentoringTableContainer.context() ,function() {
                 var string = doc.output('datauristring');
                 doc.save('report.pdf');
             });
