@@ -58,6 +58,7 @@ function ExportBase(runtime, element, initData) {
             //     'width': 170
             // });
             var dataURI = "data:text/pdf;base64," + unicodeStringToBase64(wrapperHTML);
+            console.log(dataURI);
             $(this).attr('href', dataURI);
         }
     };
