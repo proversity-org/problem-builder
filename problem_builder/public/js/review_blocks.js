@@ -51,10 +51,11 @@ function ExportBase(runtime, element, initData) {
                 $(this).attr('xlink:href', generateDataUriFromImageURL(origURL));
             });
             // Take the resulting HTML and put it into the template we have:
-            var cache_width = $report.find('.mentoring').width();
+            var mentoringTableContainer = $report.find('.mentoring-table-container');
+            var cache_width = mentoringTableContainer.width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
-            createPDF($report.find('.mentoring'), cache_width);
+            createPDF(mentoringTableContainer, cache_width);
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
