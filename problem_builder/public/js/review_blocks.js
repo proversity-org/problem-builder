@@ -70,7 +70,7 @@ function ExportBase(runtime, element, initData) {
             //     doc.save('report.pdf');
             // });
 
-            doc.fromHTML(ele.context, 15, 15, {
+            doc.fromHTML($.parseHTML(wrapperHTML, document).context, 15, 15, {
                 'width': 170
             });
 
