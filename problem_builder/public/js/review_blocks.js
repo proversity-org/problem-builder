@@ -52,7 +52,7 @@ function ExportBase(runtime, element, initData) {
             });
             // Take the resulting HTML and put it into the template we have:
             var mentoringTableContainer = $report.find('.mentoring-table-container');
-            console.log(mentoringTableContainer.context);
+            console.log($report.html());
             var cache_width = mentoringTableContainer.width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
@@ -62,7 +62,7 @@ function ExportBase(runtime, element, initData) {
               format:'a4'
             });  
 
-            doc.fromHTML(mentoringTableContainer.context, 15, 15, {
+            doc.fromHTML($report.html()t, 15, 15, {
                 'width': 170
             });
 
