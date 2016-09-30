@@ -51,19 +51,12 @@ function ExportBase(runtime, element, initData) {
                 $(this).attr('xlink:href', generateDataUriFromImageURL(origURL));
             });
             // Take the resulting HTML and put it into the template we have:
-            var mentoringTableContainer = $report.find('.mentoring-table-container');
-            var cache_width = mentoringTableContainer.width();
+            
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
-
-            // createPDF(mentoringTableContainer, cache_width);
+            console.log(typeof wrapperHTML);
+            
             var doc = new jsPDF(); 
-            doc.addHTML(document.body ,function() {
-                doc.save('report.pdf');
-            });
-
-            doc.fromHTML($report.context, 15, 15, {
-                'width': 170, 
-            });
+            doc.fromHTML($report.context, 15, 15);
             doc.save('report.pdf');
 
 
@@ -71,30 +64,6 @@ function ExportBase(runtime, element, initData) {
             $(this).attr('href', dataURI);
         }
     };
-
-    function createPDF(html, cache_width){
-     getCanvas(html).then(function(canvas){
-      var 
-      img = canvas.toDataURL("image/png"),
-      doc = new jsPDF({
-              unit:'px', 
-              format:'a4'
-            });     
-            doc.addImage(img, 'JPEG', 20, 20);
-            doc.save('report.pdf');
-            html.width(cache_width);
-     });
-    }
-
-    function getCanvas(html){
-     var a4  =[ 595.28,  841.89];
-     html.width((a4[0]*1.33333) -80).css('max-width','none');
-     console.log(html.context);
-     return html2canvas(html.context,{
-         imageTimeout:2000,
-         removeContainer:true
-        }); 
-    }
 
     var $downloadLink = $('.report-download-link', element);
     $downloadLink.on('click', downloadReport);
