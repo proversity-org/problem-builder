@@ -52,7 +52,7 @@ function ExportBase(runtime, element, initData) {
             });
             // Take the resulting HTML and put it into the template we have:
             console.log($report.find('.mentoring'));
-            var cache_width = $report.find('.mentoring').width(),
+            var cache_width = $report.find('.mentoring').width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
             createPDF($report.find('.mentoring'), cache_width);
