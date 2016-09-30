@@ -62,7 +62,9 @@ function ExportBase(runtime, element, initData) {
             // console.log(typeof $report.context);
             console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
             var doc = new jsPDF(); 
-            doc.addHTML($.parseHTML(wrapperHTML, document), function() {
+            var ele = document.createElement('div')
+            ele.innerHTML = wrapperHTML
+            doc.addHTML(ele, function() {
                 doc.save('report.pdf');
             });
 
