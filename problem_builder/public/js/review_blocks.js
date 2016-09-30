@@ -57,7 +57,7 @@ function ExportBase(runtime, element, initData) {
 
             // createPDF(mentoringTableContainer, cache_width);
             var doc = new jsPDF(); 
-            doc.addHTML($report.context ,function() {
+            doc.addHTML(document.body ,function() {
                 doc.save('report.pdf');
             });
 
