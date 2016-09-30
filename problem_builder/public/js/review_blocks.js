@@ -53,15 +53,34 @@ function ExportBase(runtime, element, initData) {
             // Take the resulting HTML and put it into the template we have:
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
-            var doc = new jsPDF('p','pt','a4');
-            doc.addHTML(wrapperHTML, function() {
-                var string = pdf.output('datauristring');
-            });
+            createPDF(wrapperHTML);
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
         }
     };
+
+    function createPDF(html){
+     getCanvas(html).then(function(canvas){
+      var 
+      img = canvas.toDataURL("image/png"),
+      doc = new jsPDF({
+              unit:'px', 
+              format:'a4'
+            });     
+            doc.addImage(img, 'JPEG', 20, 20);
+            doc.save('report.pdf');
+            // html.width(cache_width);
+     });
+    }
+
+    function getCanvas(html){
+     html.width((a4[0]*1.33333) -80).css('max-width','none');
+     return html2canvas(html,{
+         imageTimeout:2000,
+         removeContainer:true
+        }); 
+    }
 
     var $downloadLink = $('.report-download-link', element);
     $downloadLink.on('click', downloadReport);
