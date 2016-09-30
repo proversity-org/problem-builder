@@ -55,13 +55,12 @@ function ExportBase(runtime, element, initData) {
             var pdf = new jsPDF();
             pdf.addHTML(wrapperHTML,function() {
                 var string = pdf.output('datauristring');
-                console.log(string);
-                $(this).attr('href', string);
-                // $('.preview-pane').attr('src', string);
+                // $(this).attr('href', string);
+                $('.preview-pane').attr('src', string);
             });
             // var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
-            var dataURI = "data:application/pdf;base64," + unicodeStringToBase64(wrapperHTML);
-            console.log(dataURI);
+            // var dataURI = "data:application/pdf;base64," + unicodeStringToBase64(wrapperHTML);
+            // console.log(dataURI);
             // pdf.save('starapp' + '.pdf');
             // $(this).attr('href', dataURI);
         }
