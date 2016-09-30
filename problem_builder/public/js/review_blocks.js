@@ -52,18 +52,7 @@ function ExportBase(runtime, element, initData) {
             });
             // Take the resulting HTML and put it into the template we have:
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
-            var pdf = new jsPDF('p','pt','a4');
-            pdf.addHTML(wrapperHTML,function() {
-                var string = pdf.output('datauristring');
-                iframe = document.createElement('iframe');
-                iframe.setAttribute('style','position:absolute;right:0; top:0; bottom:0; height:100%; width:500px');
-                document.body.appendChild(iframe);
-                iframe.src = pdf.output('datauristring');
-            });
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
-            // var dataURI = "data:application/pdf;base64," + unicodeStringToBase64(wrapperHTML);
-            // console.log(dataURI);
-            // pdf.save('starapp' + '.pdf');
             $(this).attr('href', dataURI);
         }
     };
