@@ -51,16 +51,18 @@ function ExportBase(runtime, element, initData) {
                 $(this).attr('xlink:href', generateDataUriFromImageURL(origURL));
             });
             // Take the resulting HTML and put it into the template we have:
+            console.log($report.find('.mentoring'));
+            var cache_width = $report.find('.mentoring').width(),
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
-            createPDF(wrapperHTML);
+            createPDF($report.find('.mentoring'), cache_width);
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
         }
     };
 
-    function createPDF(html){
+    function createPDF(html, cache_width){
      getCanvas(html).then(function(canvas){
       var 
       img = canvas.toDataURL("image/png"),
@@ -70,7 +72,7 @@ function ExportBase(runtime, element, initData) {
             });     
             doc.addImage(img, 'JPEG', 20, 20);
             doc.save('report.pdf');
-            // html.width(cache_width);
+            html.width(cache_width);
      });
     }
 
