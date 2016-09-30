@@ -52,7 +52,7 @@ function ExportBase(runtime, element, initData) {
             });
             // Take the resulting HTML and put it into the template we have:
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
-            var pdf = new jsPDF();
+            var pdf = new jsPDF('p','pt','a4');
             pdf.addHTML(wrapperHTML,function() {
                 var string = pdf.output('datauristring');
                 iframe = document.createElement('iframe');
