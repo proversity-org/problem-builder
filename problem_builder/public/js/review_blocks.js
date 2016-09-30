@@ -55,13 +55,14 @@ function ExportBase(runtime, element, initData) {
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
             console.log($.parseHTML(wrapperHTML, document));
             console.log($.parseHTML(wrapperHTML, document)[9]);
-            console.log(typeof $.parseHTML(wrapperHTML, document)[9]);
-            console.log($report);
-            console.log(typeof $report);
-            console.log($report.context);
-            console.log(typeof $report.context);
+            // console.log(typeof $.parseHTML(wrapperHTML, document)[9]);
+            // console.log($report);
+            // console.log(typeof $report);
+            // console.log($report.context);
+            // console.log(typeof $report.context);
+            console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
             var doc = new jsPDF(); 
-            doc.fromHTML($.parseHTML($.parseHTML(wrapperHTML, document)[9]).context, 15, 15, {
+            doc.fromHTML($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML).context, 15, 15, {
                 'width': 170
             });
 
