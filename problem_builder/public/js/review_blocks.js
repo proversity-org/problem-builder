@@ -53,17 +53,18 @@ function ExportBase(runtime, element, initData) {
             // Take the resulting HTML and put it into the template we have:
             
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
-            console.log($.parseHTML(wrapperHTML, document));
-            console.log($.parseHTML(wrapperHTML, document)[9]);
+            // console.log($.parseHTML(wrapperHTML, document));
+            // console.log($.parseHTML(wrapperHTML, document)[9]);
             // console.log(typeof $.parseHTML(wrapperHTML, document)[9]);
             // console.log($report);
             // console.log(typeof $report);
             // console.log($report.context);
             // console.log(typeof $report.context);
-            console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
+            // console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
             var doc = new jsPDF(); 
             var ele = document.createElement('div')
             ele.innerHTML = wrapperHTML
+            console.log(ele);
             doc.addHTML(ele, function() {
                 doc.save('report.pdf');
             });
