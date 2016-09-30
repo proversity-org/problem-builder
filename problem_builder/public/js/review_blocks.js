@@ -66,13 +66,13 @@ function ExportBase(runtime, element, initData) {
             ele.innerHTML = $.parseHTML(wrapperHTML, document)[9].innerHTML
             console.log(ele);
             console.log(document.body);
-            doc.addHTML(document.body, function() {
-                doc.save('report.pdf');
-            });
-
-            // doc.fromHTML($.parseHTML(wrapperHTML, document).context, 15, 15, {
-            //     'width': 170
+            // doc.addHTML(document.body, function() {
+            //     doc.save('report.pdf');
             // });
+
+            doc.fromHTML(ele.context, 15, 15, {
+                'width': 170
+            });
 
             // doc.save('report.pdf');
 
