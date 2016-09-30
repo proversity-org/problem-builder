@@ -62,7 +62,7 @@ function ExportBase(runtime, element, initData) {
               format:'a4'
             });  
 
-            doc.fromHTML($report.find('.mentoring-table-container').get(0), 15, 15, {
+            doc.fromHTML(mentoringTableContainer.context, 15, 15, {
                 'width': 170
             });
 
