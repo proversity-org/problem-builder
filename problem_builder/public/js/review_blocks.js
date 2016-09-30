@@ -74,7 +74,7 @@ function ExportBase(runtime, element, initData) {
                 'width': 170
             });
 
-            // doc.save('report.pdf');
+            doc.save('report.pdf');
 
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
