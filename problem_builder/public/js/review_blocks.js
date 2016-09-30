@@ -76,6 +76,7 @@ function ExportBase(runtime, element, initData) {
 
     function getCanvas(html){
      var a4  =[ 595.28,  841.89];
+     console.log(html);
      html.width((a4[0]*1.33333) -80).css('max-width','none');
      return html2canvas(html,{
          imageTimeout:2000,
