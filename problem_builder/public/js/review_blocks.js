@@ -54,7 +54,7 @@ function ExportBase(runtime, element, initData) {
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
             var doc = new jsPDF('p','pt','a4');
-            doc.addHtml(wrapperHTML, function() {
+            doc.addHTML(wrapperHTML, function() {
                 var string = pdf.output('datauristring');
             });
 
