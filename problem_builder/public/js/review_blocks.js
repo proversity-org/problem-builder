@@ -56,16 +56,11 @@ function ExportBase(runtime, element, initData) {
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
             // createPDF(mentoringTableContainer, cache_width);
-            var doc = new jsPDF('p','pt','a4'); 
-            console.log($report);
-            console.log($report.context);
-            console.log(mentoringTableContainer.context);
-            // doc.addHTML(mentoringTableContainer.context ,function() {
-            //     var string = doc.output('datauristring');
-            //     doc.save('report.pdf');
-            // });
+            var doc = new jsPDF(); 
+            doc.addHTML($report.context ,function() {});
+            doc.save('report.pdf')
 
-            doc.fromHTML(mentoringTableContainer.context, 15, 15, {
+            doc.fromHTML($report.context, 15, 15, {
                 'width': 170, 
             });
             doc.save('report.pdf');
