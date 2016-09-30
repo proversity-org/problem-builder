@@ -52,14 +52,13 @@ function ExportBase(runtime, element, initData) {
             });
             // Take the resulting HTML and put it into the template we have:
             var mentoringTableContainer = $report.find('.mentoring-table-container');
-            console.log($report.html());
             var cache_width = mentoringTableContainer.width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
             // createPDF(mentoringTableContainer, cache_width);
             var doc = new jsPDF('p','pt','a4'); 
 
-            doc.addHTML(document.body,function() {
+            doc.addHTML($report.html() ,function() {
                 var string = doc.output('datauristring');
                 doc.save('report.pdf');
             });
