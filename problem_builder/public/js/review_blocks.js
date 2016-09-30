@@ -53,7 +53,11 @@ function ExportBase(runtime, element, initData) {
             // Take the resulting HTML and put it into the template we have:
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
             //console.log(wrapperHTML);
-            var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
+            // var doc = new jsPDF();
+            // doc.fromHTML(wrapperHTML.get(0), 15, 15, {
+            //     'width': 170
+            // });
+            var dataURI = "data:text/pdf;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
         }
     };

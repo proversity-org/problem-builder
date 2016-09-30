@@ -292,6 +292,7 @@ class MentoringTableBlock(
         fragment.add_content(loader.render_template('templates/html/mentoring-table-container.html', context))
         fragment.add_css_url(self.runtime.local_resource_url(self, 'public/css/mentoring-table.css'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/vendor/jquery-shorten.js'))
+        fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, self.js_path))
         fragment.initialize_js(
             'MentoringTableBlock', {
