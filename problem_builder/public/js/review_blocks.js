@@ -62,7 +62,7 @@ function ExportBase(runtime, element, initData) {
             // console.log(typeof $report.context);
             console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
             var doc = new jsPDF(); 
-            doc.fromHTML($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML).context, 15, 15, {
+            doc.fromHTML($.parseHTML(wrapperHTML, document).context, 15, 15, {
                 'width': 170
             });
 
