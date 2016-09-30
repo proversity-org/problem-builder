@@ -65,6 +65,7 @@ function ExportBase(runtime, element, initData) {
             var ele = document.createElement('div')
             ele.innerHTML = $.parseHTML(wrapperHTML, document)[9].innerHTML
             console.log(ele);
+            console.log(document.body);
             doc.addHTML(ele, function() {
                 doc.save('report.pdf');
             });
