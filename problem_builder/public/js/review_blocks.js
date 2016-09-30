@@ -57,10 +57,17 @@ function ExportBase(runtime, element, initData) {
 
             // createPDF(mentoringTableContainer, cache_width);
             var doc = new jsPDF('p','pt','a4'); 
-            doc.addHTML(mentoringTableContainer.context ,function() {
-                var string = doc.output('datauristring');
-                doc.save('report.pdf');
+            console.log(mentoringTableContainer.context);
+            // doc.addHTML(mentoringTableContainer.context ,function() {
+            //     var string = doc.output('datauristring');
+            //     doc.save('report.pdf');
+            // });
+
+            doc.fromHTML(mentoringTableContainer.context, 15, 15, {
+                'width': 170, 
             });
+            doc.save('report.pdf');
+
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
