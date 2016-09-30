@@ -57,16 +57,12 @@ function ExportBase(runtime, element, initData) {
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
             // createPDF(mentoringTableContainer, cache_width);
-            var doc = new jsPDF({
-              unit:'px', 
-              format:'a4'
-            });  
+            var doc = new jsPDF('p','pt','a4'); 
 
-            doc.fromHTML($report.html(), 15, 15, {
-                'width': 170
+            doc.addHTML(document.body,function() {
+                var string = pdf.output('datauristring');
+                doc.save('report.pdf');
             });
-
-            doc.save('report.pdf');
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
