@@ -54,12 +54,12 @@ function ExportBase(runtime, element, initData) {
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
             //console.log(wrapperHTML);
             var pdf = new jsPDF();
-            // doc.fromHTML(wrapperHTML.get(0), 15, 15, {
-            //     'width': 170
-            // });
+            pdf.fromHTML(wrapperHTML, 15, 15, {
+                'width': 170
+            });
             var dataURI = "data:text/pdf;base64," + unicodeStringToBase64(wrapperHTML);
             
-            pdf.save(wrapperHTML.val() + '.pdf');
+            pdf.save('starapp' + '.pdf');
             // $(this).attr('href', dataURI);
         }
     };
