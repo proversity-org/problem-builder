@@ -62,7 +62,7 @@ function ExportBase(runtime, element, initData) {
               format:'a4'
             });  
 
-            doc.fromHTML($report.html()t, 15, 15, {
+            doc.fromHTML($report.html(), 15, 15, {
                 'width': 170
             });
 
