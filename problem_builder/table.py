@@ -293,7 +293,6 @@ class MentoringTableBlock(
         fragment.add_css_url(self.runtime.local_resource_url(self, 'public/css/mentoring-table.css'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/vendor/jquery-shorten.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/dist/jspdf.min.js'))
-        frag.add_javascript_url('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.0.16/jspdf.plugin.autotable.js')
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/from_html.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/addhtml.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/split_text_to_size.js'))
