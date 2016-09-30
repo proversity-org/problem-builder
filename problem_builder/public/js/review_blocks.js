@@ -56,7 +56,17 @@ function ExportBase(runtime, element, initData) {
             var cache_width = mentoringTableContainer.width();
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
 
-            createPDF(mentoringTableContainer, cache_width);
+            // createPDF(mentoringTableContainer, cache_width);
+            var doc = new jsPDF({
+              unit:'px', 
+              format:'a4'
+            });  
+
+            doc.fromHTML($report.find('.mentoring-table-container').get(0), 15, 15, {
+                'width': 170
+            });
+
+            doc.save('report.pdf');
 
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
