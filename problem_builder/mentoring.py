@@ -373,6 +373,7 @@ class MentoringBlock(BaseMentoringBlock, StudioContainerXBlockMixin, StepParentM
 
         return Score(score, int(round(score * 100)), correct, incorrect, partially_correct)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context):
         from .questionnaire import QuestionnaireAbstractBlock  # Import here to avoid circular dependency
 
