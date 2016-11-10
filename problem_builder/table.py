@@ -114,6 +114,7 @@ class MentoringTableBlock(
         context = {}
         header_values = []
         content_values = []
+        vertical_values = []
         target_username = data.get('target_username')
         try:
             if target_username and target_username != self.current_user_key:
@@ -245,6 +246,7 @@ class MentoringTableBlock(
         ).delete()
         return {'message': _('Removed successfully.')}
 
+    @XBlock.supports("multi_device")
     def student_view(self, context):
         context = context.copy() if context else {}
         fragment = Fragment()
@@ -300,7 +302,7 @@ class MentoringTableBlock(
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/split_text_to_size.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/plugins/standard_fonts_metrics.js'))
         fragment.add_javascript_url(self.runtime.local_resource_url(self, 'public/js/jspdf/libs/html2canvas/dist/html2canvas.js'))
-        
+
         fragment.add_javascript_url(self.runtime.local_resource_url(self, self.js_path))
         fragment.initialize_js(
             'MentoringTableBlock', {
@@ -360,6 +362,7 @@ class MentoringTableColumn(StudioEditableXBlockMixin, StudioContainerXBlockMixin
     def author_preview_view(self, context):
         return self.mentoring_view(context)
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """ Normal view of this XBlock, identical to mentoring_view """
         return self.mentoring_view(context)

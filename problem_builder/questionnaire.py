@@ -81,6 +81,7 @@ class QuestionnaireAbstractBlock(
         """
         return uuid.uuid4().hex[:20]
 
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         name = getattr(self, "unmixed_class", self.__class__).__name__
 

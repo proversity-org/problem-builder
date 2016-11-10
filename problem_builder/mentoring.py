@@ -1068,6 +1068,7 @@ class MentoringWithExplicitStepsBlock(BaseMentoringBlock, StudioContainerWithNes
     def show_extended_feedback(self):
         return self.extended_feedback and self.max_attempts_reached
 
+    @XBlock.supports("multi_device")
     def student_view(self, context):
         fragment = Fragment()
         children_contents = []

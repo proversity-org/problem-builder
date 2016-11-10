@@ -22,6 +22,7 @@
 
 import logging
 
+from xblock.core import XBlock
 from xblock.fields import Scope, String, List
 from xblock.fragment import Fragment
 from xblock.validation import ValidationMessage
@@ -235,6 +236,7 @@ class RatingBlock(MCQBlock):
         except AttributeError:
             return self.name
 
+    @XBlock.supports("multi_device")
     def student_view(self, context):
         fragment = super(RatingBlock, self).student_view(context)
         rendering_for_studio = None
