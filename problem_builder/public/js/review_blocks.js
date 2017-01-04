@@ -51,32 +51,8 @@ function ExportBase(runtime, element, initData) {
                 $(this).attr('xlink:href', generateDataUriFromImageURL(origURL));
             });
             // Take the resulting HTML and put it into the template we have:
-            
             var wrapperHTML = reportTemplate.replace('REPORT_GOES_HERE', $report.html());
-            console.log($.parseHTML(wrapperHTML, document).context);
-            // console.log($.parseHTML(wrapperHTML, document)[9]);
-            // console.log(typeof $.parseHTML(wrapperHTML, document)[9]);
-            // console.log($report);
-            // console.log(typeof $report);
-            // console.log($report.context);
-            // console.log(typeof $report.context);
-            // console.log($.parseHTML($.parseHTML(wrapperHTML, document)[9].innerHTML));
-            var doc = new jsPDF(); 
-            // var ele = document.createElement('div')
-            // ele.innerHTML = $.parseHTML(wrapperHTML, document)[9].innerHTML
-            // console.log(ele);
-            // console.log(document.body);
-            // doc.addHTML(document.body, function() {
-            //     doc.save('report.pdf');
-            // });
-
-            doc.fromHTML($report.context, 15, 15, {
-                'width': 170
-            });
-
-            doc.save('report.pdf');
-
-
+            //console.log(wrapperHTML);
             var dataURI = "data:text/html;base64," + unicodeStringToBase64(wrapperHTML);
             $(this).attr('href', dataURI);
         }
